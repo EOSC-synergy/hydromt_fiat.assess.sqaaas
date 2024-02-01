@@ -1,0 +1,42 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/Deltares/hydromt_fiat:
+      branch: main
+      repo: https://github.com/Deltares/hydromt_fiat
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.0
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/Deltares/hydromt_fiat git:
+        commands:
+        - /usr/bin/env sh .sqa/script.chummy-flax-iguana.sh
+        container: qc.acc_lumpy-asparagus-birman
+  QC.Doc:
+    repos:
+      github.com/Deltares/hydromt_fiat find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.bluesy-chartreuse-malamute.sh
+        container: qc.doc_greasy-cornflower-dog
+      github.com/Deltares/hydromt_fiat git:
+        commands:
+        - /usr/bin/env sh .sqa/script.slimy-russet-oyster.sh
+        container: qc.doc_scanty-lilac-lemur
+  QC.Lic:
+    repos:
+      github.com/Deltares/hydromt_fiat licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.geeky-pumpkin-beetle.sh
+        container: qc.lic_pasty-maroon-mole
+  QC.Ver:
+    repos:
+      github.com/Deltares/hydromt_fiat get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.silly-chestnut-dachshund.sh
+        container: qc.ver_silly-persimmon-fox
+timeout: 5400
