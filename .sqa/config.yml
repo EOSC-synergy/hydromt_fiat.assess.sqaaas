@@ -5,7 +5,7 @@ config:
       branch: main
       repo: https://github.com/Deltares/hydromt_fiat
     github.com/EOSC-synergy/sqaaas-tooling:
-      branch: release/2.0.0
+      branch: main
       repo: https://github.com/EOSC-synergy/sqaaas-tooling
 environment:
   JPL_DOCKERFORCEBUILD: enabled
@@ -15,28 +15,54 @@ sqa_criteria:
     repos:
       github.com/Deltares/hydromt_fiat git:
         commands:
-        - /usr/bin/env sh .sqa/script.chummy-flax-iguana.sh
-        container: qc.acc_lumpy-asparagus-birman
+        - /usr/bin/env sh .sqa/script.surly-saffron-flamingo.sh
+        container: qc.acc_crappy-fuchsia-civet
   QC.Doc:
     repos:
       github.com/Deltares/hydromt_fiat find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.bluesy-chartreuse-malamute.sh
-        container: qc.doc_greasy-cornflower-dog
+        - /usr/bin/env sh .sqa/script.messy-cardinal-dalmatian.sh
+        container: qc.doc_seedy-auburn-owl
       github.com/Deltares/hydromt_fiat git:
         commands:
-        - /usr/bin/env sh .sqa/script.slimy-russet-oyster.sh
-        container: qc.doc_scanty-lilac-lemur
+        - /usr/bin/env sh .sqa/script.clammy-sepia-avocet.sh
+        container: qc.doc_gamy-russet-zonkey
+      github.com/Deltares/hydromt_fiat restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.snazzy-green-vulture.sh
+        container: qc.doc_wiggy-corn-havanese
   QC.Lic:
     repos:
       github.com/Deltares/hydromt_fiat licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.geeky-pumpkin-beetle.sh
-        container: qc.lic_pasty-maroon-mole
+        - /usr/bin/env sh .sqa/script.cheeky-green-eleuth.sh
+        container: qc.lic_ready-puce-kudu
+  QC.Sec:
+    repos:
+      github.com/Deltares/hydromt_fiat bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.shabby-apricot-akita.sh
+        container: qc.sec_crabby-xanthic-indri
+  QC.Sty:
+    repos:
+      github.com/Deltares/hydromt_fiat flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.shaky-olivine-crocodile.sh
+        container: qc.sty_bumpy-razzmatazz-cougar
+      github.com/Deltares/hydromt_fiat jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.baggy-indigo-walrus.sh
+        container: qc.sty_woozy-teal-meerkat
+  QC.Uni:
+    repos:
+      github.com/Deltares/hydromt_fiat pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.craggy-wisteria-kingfisher.sh
+        container: qc.uni_droopy-cinnamon-frigatebird
   QC.Ver:
     repos:
       github.com/Deltares/hydromt_fiat get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.silly-chestnut-dachshund.sh
-        container: qc.ver_silly-persimmon-fox
+        - /usr/bin/env sh .sqa/script.cloudy-ultramarine-llama.sh
+        container: qc.ver_flabby-periwinkle-markhor
 timeout: 5400
